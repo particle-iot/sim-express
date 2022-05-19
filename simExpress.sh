@@ -12,10 +12,11 @@ echo "Thank you, please standby while I get to work!"
 
 cat $devicelist | while read sim || [[ -n $sim ]];
 do
-DEACTIVATE=$(
+RUNME=$(
    curl -X PUT https://api.particle.io/v1/products/$productID/sims/$sim \
        -d action=$action \
        -d access_token=$token)
+echo $RUNME
 
 echo -e "\nParticle SIM Express is now going to $action SIM: $sim"
 done
